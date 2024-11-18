@@ -333,12 +333,12 @@ const searchScaleByStandard = async (selectedName: string) => {
 const value2 = ref('')
 const options2 = [
   {
-    value: '项目开始',
-    label: '项目开始',
-  },
-  {
     value: '项目立项',
     label: '项目立项',
+  },
+  {
+    value: '项目招标',
+    label: '项目招标',
   },
   {
     value: '项目早期',
@@ -360,8 +360,8 @@ const updateScale = async () => {
   try {
     const response = await axios.post(
       `http://localhost:9000/scalechange/create`,
-      { systemID: 1,
-        standardName: "标准1",
+      { systemID: systemStore.systemID,
+        standardName: systemStore.standardName,
         stageName: value2.value});
 
     systemStore.adjustedFP2 = response.data;
